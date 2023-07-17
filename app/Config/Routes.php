@@ -3,6 +3,7 @@
 namespace Config;
 
 // Create a new instance of our RouteCollection class.
+use App\Controllers\User;
 use App\Controllers\Login;
 use App\Controllers\News;
 use App\Controllers\pages;
@@ -37,12 +38,14 @@ $routes->set404Override();
 
 $routes->match(['get', 'post'], 'register', [Register::class, 'store']);
 $routes->get('user/register', [Register::class, 'index']);
+$routes->get('user/profile', [User::class, 'index']);
+$routes->post('user/edit', [User::class, 'edit']);
 
 $routes->get('user/login', [Login::class, 'index']);
 $routes->post('login', [Login::class, 'login']);
 $routes->get('logout', [Login::class, 'logout']);
 
-$routes->match(['get', 'post'], 'news/create', [News::class, 'create']);
+$routes->match(['get', 'post'], 'news/create', [News::class, 'create'], ['filter' => 'authGuard']);
 $routes->get('news/(:segment)', [News::class, 'view']);
 $routes->get('/', [News::class, 'index']);
 $routes->get('pages', [pages::class, 'index']);

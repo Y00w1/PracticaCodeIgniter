@@ -10,8 +10,9 @@ class Register extends Controller
         helper(['form']);
         $data = [];
         echo view('templates/layout')
-        .view('users/register', $data)
-        .view('templates/footer');
+            .view('templates/headerNoLogin', ['title'=> 'Register'])
+            .view('users/register', $data)
+            .view('templates/footer');
     }
 
     public function store()
@@ -32,6 +33,7 @@ class Register extends Controller
         ];
         if(! $this->validate($rules)){
             return view('templates/layout')
+                .view('templates/headerNoLogin', ['title'=> 'Register'])
                 .view('user/register')
                 .view('templates/footer');
         }
@@ -42,8 +44,11 @@ class Register extends Controller
             'password' => password_hash($post['password'] ,PASSWORD_DEFAULT)
         ];
         $userModel->save($data);
+        $user = $userModel->where('email', $data['email'])->first();
+        session()->set('isLoggedIn', true);
+        session()->set('user', $user);
         return view('templates/layout')
-            . view('templates/header', ['title' => 'NEWS'])
+            . view('templates/header', ['title' => 'NEWS', 'user' => $user])
             . view('news/index')
             . view('templates/footer');
     }

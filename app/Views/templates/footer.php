@@ -1,4 +1,5 @@
-<footer class="bg-white rounded-lg shadow m-4 dark:bg-gray-800 bottom-0 w-full ">
+<div class="flex m-2">
+<footer class="bg-white rounded-lg shadow dark:bg-gray-800 bottom-0 flex-col-reverse w-full ">
     <div class="w-full mx-auto max-w-screen-xl p-4 px-9 md:flex md:items-center md:justify-between">
       <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="/" class="hover:underline">™</a>. All Rights Reserved.
     </span>
@@ -18,5 +19,6 @@
         </ul>
     </div>
 </footer>
+</div>
 </body>
 </html>

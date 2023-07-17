@@ -1,5 +1,3 @@
-
-
 <nav class="bg-slate-950 w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
         <a href="/" class="flex items-center">
@@ -105,36 +103,13 @@ l615 -3 3 -624z"/>
 -14 0 -28 -4 -31 -10z"/>
                 </g>
             </svg>
-            <span class="ml-4 self-center text-2xl font-semibold whitespace-nowrap dark:text-white"><?= esc($title) ?></span>
+            <span class="ml -4 self-center text-2xl font-semibold whitespace-nowrap dark:text-white"><?= esc($title) ?></span>
         </a>
+            <div class="flex items-center">
+                <a href="/user/login" class="text-sm mr-4 text-blue-600 dark:text-blue-500 hover:underline">Login</a>
 
-        <?php if ($user != null) : ?>
-            <div class="flex justify-end px-4 pt-4">
-                <button id="dropdownButton" data-dropdown-toggle="dropdown" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
-                    <span class="sr-only">Open dropdown</span>
-                    <?= esc($user['name']) ?>
-                </button>
-                <!-- Dropdown menu -->
-                <div id="dropdown" class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                    <ul class="py-2" aria-labelledby="dropdownButton">
-                        <li>
-                            <a href="/user/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Profile</a>
-                        </li>
-                        <li>
-                            <a href="/logout" class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Logout</a>
-                        </li>
-                    </ul>
-                </div>
+                <a href="/user/register" class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Register</a>
             </div>
-        <?php else : ?>
-        <div class="flex items-center">
-            <a href="/user/login" class="text-sm mr-4 text-blue-600 dark:text-blue-500 hover:underline">Login</a>
-
-            <a href="/user/register" class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Register</a>
-        </div>
-        <?php endif; ?>
-
-
     </div>
 </nav>
 <nav class="bg-gray-50 dark:bg-gray-700">
@@ -144,16 +119,7 @@ l615 -3 3 -624z"/>
                 <li>
                     <a href="/" class="text-gray-900 dark:text-white hover:underline" aria-current="page">Home</a>
                 </li>
-                <?php if (session()->get('isLoggedIn')): ?>
-                <li>
-                    <a href="/news/create" class="text-gray-900 dark:text-white hover:underline">Create</a>
-                </li>
-                <?php endif ?>
-                <li>
-                    <a href="#" class="text-gray-900 dark:text-white hover:underline">Features</a>
-                </li>
             </ul>
         </div>
     </div>
 </nav>
-

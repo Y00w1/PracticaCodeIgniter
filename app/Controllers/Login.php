@@ -8,6 +8,7 @@ class Login extends BaseController
     public function index()
     {
         return view('templates/layout')
+            .view('templates/headerNoLogin', ['title'=> 'Login'])
             .view('users/login')
             .view('templates/footer');
     }
@@ -27,7 +28,8 @@ class Login extends BaseController
             return redirect()->to('/');
         } else {
             // Invalid credentials
-            return redirect()->back()->with('error', 'Invalid email or password');
+            //
+            return redirect()->to('/user/login')->with('error', 'Invalid email or password');
         }
     }
 
